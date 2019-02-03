@@ -9,7 +9,7 @@
   4. 双向链表
 ### 栈
 * [顺序栈及两栈共享空间](https://github.com/MorsoLi/data-structure/blob/master/stack_seq.cpp)
-* [链式栈]()
+* 链式栈
 ### 队列
 * [顺序队列及循环队列](https://github.com/MorsoLi/data-structure/blob/master/queue_seq.cpp)
 * [链式队列](https://github.com/MorsoLi/data-structure/blob/master/queue_chain.cpp)
