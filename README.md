@@ -10,15 +10,15 @@
      - [顺序存储]
      - [链式存储]
   2. 堆栈
-     - [顺序栈及两栈共享空间](https://github.com/MorsoLi/data-structure/blob/master/stack_seq.cpp)
+     - [顺序栈及两栈共享空间]
   3. 队列
-     - [顺序队列及循环队列](https://github.com/MorsoLi/data-structure/blob/master/queue_seq.cpp)
-     - [链式队列](https://github.com/MorsoLi/data-structure/blob/master/queue_chain.cpp)
+     - [顺序队列及循环队列]
+     - [链式队列]
 ### 第三讲 树
   1. 树与树的表示
-     - [双亲表示法](https://github.com/MorsoLi/data-structure/blob/master/parent_tree.cpp)
-     - [孩子表示法](https://github.com/MorsoLi/data-structure/blob/master/child_tree.cpp)
-     - [双亲孩子表示法](https://github.com/MorsoLi/data-structure/blob/master/parent_child_tree.cpp)
+     - [双亲表示法]
+     - [孩子表示法]
+     - [双亲孩子表示法]
   2. 二叉树及存储结构
   3. 二叉树的遍历
   4. 二叉树的搜索
