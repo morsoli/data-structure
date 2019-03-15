@@ -6,9 +6,9 @@
 # https://leetcode-cn.com/problems/roman-to-integer/description/
 #
 # algorithms
-# Easy (57.08%)
-# Total Accepted:    45.1K
-# Total Submissions: 79K
+# Easy (57.13%)
+# Total Accepted:    45.6K
+# Total Submissions: 79.8K
 # Testcase Example:  '"III"'
 #
 # 罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
@@ -67,12 +67,13 @@
 #
 class Solution:
     def romanToInt(self, s: str) -> int:
-        d = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
         result = 0
+        d = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
         for i in range(len(s)-1):
-            if d[s[i]] < d[s[i+1]]:
-                result-= d[s[i]]
+            if d[s[i]]<d[s[i+1]]:
+                result-=d[s[i]]
             else:
                 result+=d[s[i]]
-        result+=d[s[len(s)-1]]
-        return result if 1 < result < 3999 else False           
+        result+=d[s[-1]]
+        return result
+
