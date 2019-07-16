@@ -42,9 +42,9 @@ class Solution:
         if n == 0:
             raise ValueError
 
-        imin, imnums1x, half_len = 0, m, (m + n + 1) / 2
+        imin, imax, half_len = 0, m, int((m + n + 1) / 2)
         while imin <= imax:
-            i = (imin + imax) / 2
+            i = int((imin + imax) / 2)
             j = half_len - i
             if i < m and nums2[j-1] > nums1[i]:
                 # i is too small, must increase it
@@ -70,6 +70,5 @@ class Solution:
                 elif j == n: 
                     min_of_right = nums1[i]
                 else:
-                     min_of_right = min(nums1[i], nums2[j])
-
+                    min_of_right = min(nums1[i], nums2[j])
                 return (max_of_left + min_of_right) / 2.0
