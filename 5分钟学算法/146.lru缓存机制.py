@@ -3,60 +3,57 @@
 #
 # [146] LRU缓存机制
 #
-class ListNode:
-    def __init__(self,key,value):
-        self.key=key
-        self.value=value
-        self.next=None
-        self.pre=None
-class LRUCache:
 
-    def __init__(self, capacity: int):
-        self.head=ListNode(0,0)
-        self.tail=ListNode(0,0)
-        self.node_dict={}
-        self.capacity=capacity
-
-    def get(self, key: int) -> int:
-        if key in self.node_dict:
-            node=self.node_dict[key]
-            node=self.del_node(node)
-            self.append(node)
-            return node.value
-        else:
-            return -1
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.node_dict:
-            node=self.node_dict[k]
-            node=self.del_node(node)
-            node.value=value
-            self.append(node)
-            return None
-        if len(self.node_dict)==self.capacity:
-            self.node_dict.pop(self.head.next.key)
-            self.del_node(self.head.next)
-        node=ListNode(key,value)
-        self.append(node)
-        self.node_dict[key]=node
-    def append(self,node:ListNode):
-        self.tail.next=node
-        node.next=None
-        node.pre=self.tail
-        self.tail=self.tail.next
-    
-    def del_node(self,node:ListNode):
-        if node==self.tail:
-            self.tail=node.pre
-        pre=node.pre
-        next=node.next
-        pre.next=node.next
-        node.pre=None
-        node.next=None
-        if next!=None:
-            next.pre=pre
-        return node
+class Node(object):
+ 
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
+        self.next = None
+        self.prev = None
         
+class LRUCache(object):
+ 
+    def __init__(self, capacity):
+        self.dic = {}
+        self.capacity = capacity
+        self.dummy_head = Node(0, 0)
+        self.dummy_tail = Node(0, 0)
+        self.dummy_head.next = self.dummy_tail
+        self.dummy_tail.prev = self.dummy_head
+ 
+    def get(self, key):
+        if key not in self.dic:
+            return -1
+        node = self.dic[key]
+        self.remove(node)
+        self.append(node)
+        return node.val
+ 
+    def put(self, key, value):
+        if key in self.dic:
+            self.remove(self.dic[key])
+        node = Node(key, value)
+        self.append(node)
+        self.dic[key] = node
+ 
+        if len(self.dic) > self.capacity:
+            head = self.dummy_head.next
+            self.remove(head)
+            del self.dic[head.key]
+ 
+    def append(self, node):
+        tail = self.dummy_tail.prev
+        tail.next = node
+        node.prev = tail
+        self.dummy_tail.prev = node
+        node.next = self.dummy_tail
+ 
+    def remove(self, node):
+        prev = node.prev
+        next = node.next
+        prev.next = next
+        next.prev = prev
 
 
 # Your LRUCache object will be instantiated and called as such:
